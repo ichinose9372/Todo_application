@@ -1,0 +1,18 @@
+version: "3"
+services:
+  application:
+    build:
+      context: ./application
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=your_root_password
+      - MYSQL_DATABASE=your_database
+      - MYSQL_USER=your_user
+      - MYSQL_PASSWORD=your_password
