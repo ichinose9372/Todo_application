@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 	"github.com/gin-gonic/gin"
-	"main/handler" // ここにhandlerディレクトリのパスを記述します
+	"localhost/prohject/handler"
 )
 
 type Todo struct {
