@@ -3,8 +3,9 @@ package main
 import (
 	"log"
 	"net/http"
+	"database/sql" 
 	"github.com/gin-gonic/gin"
-	"localhost/prohject/handler"
+	"my_project/handler"
 )
 
 type Todo struct {
@@ -44,4 +45,11 @@ func main() {
 	if err := r.Run(":8080"); err != nil {
 		log.Fatal(err)
 	}
+	db, err := sql.Open("mysql", "user:password@tcp(127.0.0.1:3306)/dbname")
+	if err != nil {
+		log.Fatalf("failed to connect to database: %v", err)
+	}
+	defer db.Close()
+
+	handler.SetDB(db)
 }
